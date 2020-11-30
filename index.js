@@ -27,7 +27,7 @@ parameters: {
 
 app.get("/youtube", (req, res) => {
   var paramsUrl = url.parse(req.url, true).query;
-  var video = ytdl.getInfo(paramsUrl.youtubeURL,['-x', '--audio-format', 'mp3', '--skip-download', '-g', '-f', '(mp3,webm)[asr>0]'], function(err, info) {
+  var video = ytdl.getInfo(paramsUrl.youtubeURL,['-x', '--audio-format', 'mp3', '--skip-download', '-g', '-f', '(mp3,webm)[asr>0]', "--force-ipv4"], function(err, info) {
     if(!err) res.send(info);
     else res.send(err);
   });
